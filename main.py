@@ -1,6 +1,6 @@
 from pandas_gbq import to_gbq
 from src.drupal_api import get_drupal_commerce_orders
-from src.error_report import ErrorReport
+#from src.error_report import ErrorReport
 import os
 from google.cloud import bigquery
 from google.auth import default
@@ -10,11 +10,11 @@ try:
     df = get_drupal_commerce_orders()
     
 except Exception as e:
-        error=ErrorReport()
-        error.add_name('Error Downloading Funeflor Orders data')
-        error.add_message(f'Error:  {str(e)}')
-        error.send()
-
+        #error=ErrorReport()
+        #error.add_name('Error Downloading Funeflor Orders data')
+        #error.add_message(f'Error:  {str(e)}')
+        #error.send()
+        print(e)
 try: 
         # Determine environment and set up BigQuery client
     try:
@@ -29,7 +29,8 @@ try:
     to_gbq(df, os.getenv('GC_TABLE'), project_id=os.getenv('GC_PROJECT'), if_exists='replace', credentials=credentials)
 
 except Exception as e:
-        error=ErrorReport()
-        error.add_name('MSP Force Manager Synchronization Error!!!!')
-        error.add_message(f'Error:  {str(e)}')
-        error.send()
+    print(e)
+         #error=ErrorReport()
+        #error.add_name('Error Downloading Funeflor Orders data')
+        #error.add_message(f'Error:  {str(e)}')
+        #error.send()

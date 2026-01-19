@@ -1,6 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-image', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/drupal-api', '.']
+    
+images:
+  - 'europe-west1-docker.pkg.dev/memora-224414/my-docker-repo/my-image:latest'
 
 options:
   logging: CLOUD_LOGGING_ONLY

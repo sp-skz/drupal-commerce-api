@@ -11,7 +11,7 @@ port = 465
 
 ######### Reciver Email
 
-receiver = ['sportoles@sekuenz.com', 'mnosas@sekuenz.com']
+receiver = ['sportoles@sekuenz.com']
 
 class ErrorReport:
     def __init__(self):
